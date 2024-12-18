@@ -40,7 +40,9 @@ dependencies:
   google_maps_flutter: ^2.10.0
   lottie: ^3.3.0
   provider: ^6.1.2
-  # dio: ^5.7.0
+  dio: ^5.7.0
+  dartz: ^0.10.1
+  google_maps_webservice: ^0.0.20-nullsafety.6
 
 dev_dependencies:
   flutter_test:

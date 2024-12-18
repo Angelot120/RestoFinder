@@ -1,3 +1,4 @@
+
 class Dish {
   final int id;
   final String name;
@@ -24,4 +25,37 @@ class Dish {
     required this.cuisineType,
     required this.photos,
   });
+
+  // Méthode pour convertir le JSON en objet Dish
+  factory Dish.fromJson(Map<String, dynamic> json) {
+    return Dish(
+      id: json['id'],
+      name: json['name'],
+      description: json['description'],
+      price: json['price'].toDouble(),
+      ingredients: List<String>.from(json['ingredients']),
+      calories: json['calories'].toDouble(),
+      carbs: json['carbs'].toDouble(),
+      protein: json['protein'].toDouble(),
+      preparationTime: json['preparationTime'],
+      cuisineType: json['cuisineType'],
+      photos: List<String>.from(json['photos']),
+    );
+  }
+
+  Map<String, dynamic> toJson() {
+    return {
+      'id': id,
+      'name': name,
+      'description': description,
+      'price': price,
+      'ingredients': ingredients,
+      'calories': calories,
+      'carbs': carbs,
+      'protein': protein,
+      'preparationTime': preparationTime,
+      'cuisineType': cuisineType,
+      'photos': photos,
+    };
+  }
 }
