@@ -17,17 +17,17 @@ class DishModel extends Dish {
 
   factory DishModel.fromJson(Map<String, dynamic> json) {
     return DishModel(
-      id: json['id'],
-      name: json['name'],
-      description: json['description'],
+      id: json['id'] ?? 0,
+      name: json['name'] ?? '',
+      description: json['description'] ?? '',
       price: (json['price'] as num).toDouble(),
-      ingredients: List<String>.from(json['ingredients']),
-      calories: json['calories'],
+      ingredients: List<String>.from(json['ingredients'] ?? []),
+      calories: json['calories'] ?? 0,
       carbs: (json['carbs'] as num).toDouble(),
       protein: (json['protein'] as num).toDouble(),
-      preparationTime: json['preparation_time'],
-      cuisineType: json['cuisine_type'],
-      photos: List<String>.from(json['photos']),
+      preparationTime: json['preparation_time'] ?? 0,
+      cuisineType: json['cuisine_type'] ?? '',
+      photos: List<String>.from(json['photos'] ?? []),
     );
   }
 

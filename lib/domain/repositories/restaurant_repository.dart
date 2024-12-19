@@ -1,23 +1,12 @@
 import 'package:dartz/dartz.dart';
-import 'package:restofinder/core/errors/failure.dart';
+import 'package:restofinder/core/resources/data_state.dart';
 import 'package:restofinder/domain/entities/Restaurant.dart';
 
 abstract class RestaurantRepository {
-  //   Future<Restaurant> getRestaurant(int id);
-  // Future<List<Restaurant>> getNearbyRestaurants(
-  //     double latitude, double longitude);
+  /// Récupère un restaurant spécifique à partir de son ID.
+  Future<Either<DataState, Restaurant>> getRestaurant(int id);
 
-  // Future<Either<Failure, List<Restaurant>>> getNearbyRestaurants(double latitude, double longitude, double d, {
-  //   required double latitude,
-  //   required double longitude,
-  //   required double radius,
-  // });
-
-  Future<Either<Failure, Restaurant>> getRestaurant(int id);
-
-  Future<Either<Failure, List<Restaurant>>> getNearbyRestaurants(
-    double latitude,
-    double longitude,
-    double radius,
-  );
+  /// Récupère les restaurants à proximité selon la latitude, longitude et rayon.
+  Future<Either<DataState, List<Restaurant>>> getNearbyRestaurants(
+      double latitude, double longitude, double radius);
 }

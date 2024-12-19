@@ -19,23 +19,23 @@ class RestaurantModel extends Restaurant {
 
   factory RestaurantModel.fromJson(Map<String, dynamic> json) {
     return RestaurantModel(
-      id: json['id'],
-      name: json['name'],
-      description: json['description'],
-      address: json['address'],
-      phone: json['phone'],
-      email: json['email'],
-      website: json['website'],
-      // openingHours: Map<String, String>.from(json['opening_hours']),
+      id: json['id'] ?? 0,
+      name: json['name'] ?? '',
+      description: json['description'] ?? '',
+      address: json['address'] ?? '',
+      phone: json['phone'] ?? '',
+      email: json['email'] ?? '',
+      website: json['website'] ?? '',
       location: Location(
-        latitude: json['location']['latitude'],
-        longitude: json['location']['longitude'],
-        distance: json['location']['distance'],
+        latitude: (json['location']['latitude'] ?? 0).toDouble(),
+        longitude: (json['location']['longitude'] ?? 0).toDouble(),
+        distance: json['location']['distance'] ?? '',
       ),
-      menu:
-          (json['menu'] as List).map((e) => MenuCategory.fromJson(e)).toList(),
-      rating: Rating.fromJson(json['rating']),
-      photos: List<String>.from(json['photos']),
+      menu: (json['menu'] as List)
+          .map((e) => MenuCategoryModel.fromJson(e))
+          .toList(),
+      rating: RatingModel.fromJson(json['rating'] ?? {}),
+      photos: List<String>.from(json['photos'] ?? []),
     );
   }
 
@@ -66,12 +66,9 @@ class MenuCategoryModel extends MenuCategory {
 
   factory MenuCategoryModel.fromJson(Map<String, dynamic> json) {
     return MenuCategoryModel(
-      category: json['category'],
+      category: json['category'] ?? '',
       items: (json['items'] as List)
-          .map((itemJson) => MenuItem(
-                name: itemJson['name'],
-                price: itemJson['price'],
-              ))
+          .map((itemJson) => MenuItem.fromJson(itemJson))
           .toList(),
     );
   }
@@ -79,9 +76,7 @@ class MenuCategoryModel extends MenuCategory {
   Map<String, dynamic> toJson() {
     return {
       'category': category,
-      'items': items
-          .map((item) => {'name': item.name, 'price': item.price})
-          .toList(),
+      'items': items.map((item) => item.toJson()).toList(),
     };
   }
 }
@@ -95,13 +90,12 @@ class RatingModel extends Rating {
 
   factory RatingModel.fromJson(Map<String, dynamic> json) {
     return RatingModel(
-      average: json['average'],
-      reviewsCount: json['reviews_count'],
-      comments: List<String>.from(json['comments']),
+      average: (json['average'] ?? 0).toDouble(),
+      reviewsCount: json['reviews_count'] ?? 0,
+      comments: List<String>.from(json['comments'] ?? []),
     );
   }
 
-  @override
   Map<String, dynamic> toJson() {
     return {
       'average': average,

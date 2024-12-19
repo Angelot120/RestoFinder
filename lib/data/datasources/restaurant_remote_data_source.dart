@@ -1,29 +1,20 @@
 import 'package:dio/dio.dart';
+import 'package:restofinder/core/constants/constants.dart';
 
+import 'package:retrofit/retrofit.dart';
+part 'restaurant_remote_data_source.g.dart';
+
+@RestApi(baseUrl: newsAPIBaseURL)
 abstract class RestaurantRemoteDataSource {
-  Future<Map<String, dynamic>> getRestaurant(int id);
+  factory RestaurantRemoteDataSource(Dio dio) = _RestaurantRemoteDataSource;
+
+  @GET('restaurants/{id}')
+  Future<Map<String, dynamic>> getRestaurant(@Path("id") int id);
+
+  @GET('restaurants/nearby')
   Future<List<Map<String, dynamic>>> getNearbyRestaurants(
-      double latitude, double longitude, double radius);
-}
-
-class RestaurantRemoteDataSourceImpl implements RestaurantRemoteDataSource {
-  final Dio httpClient;
-
-  RestaurantRemoteDataSourceImpl(this.httpClient);
-
-  @override
-  Future<Map<String, dynamic>> getRestaurant(int id) async {
-    final response = await httpClient.get('/restaurants/$id');
-    return response.data;
-  }
-
-  @override
-  Future<List<Map<String, dynamic>>> getNearbyRestaurants(
-      double latitude, double longitude, double radius) async {
-    final response = await httpClient.get('/restaurants', queryParameters: {
-      'latitude': latitude,
-      'longitude': longitude,
-    });
-    return List<Map<String, dynamic>>.from(response.data);
-  }
+    @Query('latitude') double latitude,
+    @Query('longitude') double longitude,
+    @Query('radius') double radius,
+  );
 }

@@ -1,4 +1,7 @@
-class Restaurant {
+import 'package:equatable/equatable.dart';
+
+// New extends added
+class Restaurant extends Equatable {
   late final int id;
   late final String name;
   late final String description;
@@ -26,6 +29,27 @@ class Restaurant {
     required this.rating,
     required this.photos,
   });
+
+  // New added override
+  @override
+  List<Object?> get props {
+    return [
+      id,
+      name,
+      description,
+      address,
+      phone,
+      email,
+      website,
+      // openingHours,
+      location,
+      menu,
+      rating,
+      photos,
+    ];
+  }
+
+  static fromJson(Map<String, dynamic> jsonData) {}
 }
 
 class Location {

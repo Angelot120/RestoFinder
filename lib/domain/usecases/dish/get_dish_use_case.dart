@@ -1,3 +1,4 @@
+import 'package:restofinder/core/resources/data_state.dart';
 import 'package:restofinder/domain/entities/Dish.dart';
 import 'package:restofinder/domain/repositories/dish_repository.dart';
 
@@ -6,7 +7,7 @@ class GetDishUseCase {
 
   GetDishUseCase(this.repository);
 
-  Future<Dish> execute(int dishId) {
-    return repository.getDish(dishId);
+  Future<DataState<Dish>> call(int id) {
+    return repository.getDish(id, 'YOUR_API_KEY');
   }
 }
