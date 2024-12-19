@@ -113,6 +113,15 @@ class RestaurantInfo extends StatelessWidget {
               ),
             ],
           ),
+          SizedBox(
+            height: 30,
+          ),
+          Container(
+            height: 300,
+            decoration: BoxDecoration(
+                color: Color(0xFFF0F0F0),
+                borderRadius: BorderRadius.circular(20)),
+          )
         ],
       ),
     );

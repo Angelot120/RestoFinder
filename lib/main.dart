@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:restofinder/config/theme/app_themes.dart';
+import 'package:restofinder/data/models/dish_model.dart';
 import 'package:restofinder/data/models/restaurant_model.dart';
+import 'package:restofinder/domain/entities/Dish.dart';
 import 'package:restofinder/domain/entities/Restaurant.dart';
+import 'package:restofinder/presentation/screens/dish_details_screen.dart';
 import 'package:restofinder/presentation/screens/loading_screen.dart';
 // import 'package:restofinder/presentation/screens/home_screen.dart';
-import 'package:restofinder/presentation/screens/restaurant_details_screen.dart';
+// import 'package:restofinder/presentation/screens/restaurant_details_screen.dart';
 // import 'package:restofinder/presentation/screens/loading_screen.dart';
 
 void main() {
@@ -65,12 +68,45 @@ class MyApp extends StatelessWidget {
     }
   };
 
+  final Map<String, dynamic> DishjsonData = {
+    "id": 1,
+    "name": "Boeuf Bourguignon",
+    "description":
+        "Un classique de la cuisine française, préparé avec du boeuf, du vin rouge, des champignons et des légumes.",
+    "price": 22.0,
+    "ingredients": [
+      "Boeuf",
+      "Vin rouge",
+      "Champignons",
+      "Carottes",
+      "Oignons",
+      "Bacon",
+      "Herbes de Provence"
+    ],
+    "calories": 750,
+    "carbs": 35.5,
+    "protein": 50.0,
+    "preparationTime": 180,
+    "cuisineType": "Française",
+    "photos": [
+      "https://www.example.com/photos/boeuf_bourguignon1.jpg",
+      "https://www.example.com/photos/boeuf_bourguignon2.jpg"
+    ]
+  };
+
   // Désérialisation du JSON en un objet Restaurant
   Future<Restaurant> loadRestaurantData() async {
     await Future.delayed(Duration(seconds: 4)); // Simule un délai de chargement
     print("Chargement des données...");
     return RestaurantModel.fromJson(
         jsonData); // Retourne le restaurant désérialisé
+  }
+
+  // Désérialisation du JSON en un objet Plat
+  Future<Dish> loadDishData() async {
+    await Future.delayed(Duration(seconds: 0)); // Simule un délai de chargement
+    print("Chargement des données...");
+    return DishModel.fromJson(DishjsonData); // Retourne le plat désérialisé
   }
 
   // This widget is the root of your application.
@@ -80,8 +116,8 @@ class MyApp extends StatelessWidget {
       title: 'RestoFinder',
       theme: theme(),
       debugShowCheckedModeBanner: false,
-      home: FutureBuilder<Restaurant>(
-          future: loadRestaurantData(), // Charge les données
+      home: FutureBuilder<Dish>(
+          future: loadDishData(), // Charge les données
           builder: (context, snapshot) {
             if (snapshot.connectionState == ConnectionState.waiting) {
               return Scaffold(body: LoadingScreen()
@@ -97,8 +133,8 @@ class MyApp extends StatelessWidget {
                 ),
               );
             } else if (snapshot.hasData) {
-              return RestaurantDetailsScreen(
-                restaurant: snapshot.data!,
+              return DishDetailsScreen(
+                dish: snapshot.data!,
               );
             } else {
               return Scaffold(
