@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:restofinder/domain/entities/Dish.dart';
+import 'package:restofinder/domain/entities/Restaurant.dart';
 
 class DishInfo extends StatefulWidget {
   final Dish dish;
@@ -10,12 +10,21 @@ class DishInfo extends StatefulWidget {
 }
 
 class DishInfoState extends State<DishInfo> {
-  int _quantity = 1; // Valeur initiale de la quantité (commence à 1)
+  int _quantity = 1;
+  late double totalPrice;
+
+  @override
+  void initState() {
+    super.initState();
+    totalPrice = (widget.dish.price *
+        _quantity); // Initialisation correcte dans initState()
+  }
 
   // Fonction pour augmenter la quantité
   void increaseQuantity() {
     setState(() {
       _quantity++;
+      totalPrice = widget.dish.price * _quantity;
     });
   }
 
@@ -24,29 +33,31 @@ class DishInfoState extends State<DishInfo> {
     if (_quantity > 1) {
       setState(() {
         _quantity--;
+        totalPrice = widget.dish.price * _quantity;
       });
     }
   }
 
   @override
   Widget build(BuildContext context) {
+    final dish = widget.dish;
+
     return Stack(
       children: [
         Padding(
           padding: const EdgeInsets.all(8.0),
           child: Container(
             child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                SizedBox(
-                  height: 30,
-                ),
+                SizedBox(height: 30),
                 Row(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     Expanded(
                       child: Text(
-                        'Burger éclaire',
+                        dish.name,
                         style: TextStyle(fontSize: 30),
                         overflow: TextOverflow.ellipsis,
                       ),
@@ -62,10 +73,7 @@ class DishInfoState extends State<DishInfo> {
                           ),
                         ),
                         SizedBox(width: 8),
-                        Text(
-                          '$_quantity',
-                          style: TextStyle(fontSize: 20),
-                        ),
+                        Text('$_quantity', style: TextStyle(fontSize: 20)),
                         SizedBox(width: 8),
                         Material(
                           color: Color(0xFFFF7F00),
@@ -79,197 +87,85 @@ class DishInfoState extends State<DishInfo> {
                     ),
                   ],
                 ),
-                SizedBox(
-                  height: 30,
-                ),
+                SizedBox(height: 30),
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
                       'Description',
-                      style: TextStyle(fontSize: 17, fontFamily: 'Quicksand'),
+                      style:
+                          TextStyle(fontSize: 17, fontFamily: 'Quicksand-bold'),
                     ),
                     Text(
-                        style: TextStyle(fontSize: 12, fontFamily: 'Quicksand'),
-                        "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.")
+                      style: TextStyle(fontSize: 12, fontFamily: 'Quicksand'),
+                      dish.description,
+                    ),
                   ],
                 ),
-                SizedBox(
-                  height: 30,
-                ),
+                SizedBox(height: 30),
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      'Nutrution',
-                      style: TextStyle(fontSize: 17, fontFamily: 'Quicksand'),
+                      'Nutritional Info',
+                      style:
+                          TextStyle(fontSize: 17, fontFamily: 'Quicksand-bold'),
                     ),
-                    SizedBox(
-                      height: 10,
-                    ),
+                    SizedBox(height: 10),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Container(
-                          padding: EdgeInsets.only(
-                              top: 20, left: 30, bottom: 20, right: 30),
-                          decoration: BoxDecoration(
-                              color: Color(0xFFF0F0F0),
-                              borderRadius: BorderRadius.circular(10)),
-                          child: Column(
-                            children: [
-                              Text('Cal',
-                                  style: TextStyle(
-                                      fontSize: 17, fontFamily: 'Quicksand')),
-                              Text('210', style: TextStyle(fontSize: 20)),
-                            ],
-                          ),
-                        ),
-                        Container(
-                          padding: EdgeInsets.only(
-                              top: 20, left: 30, bottom: 20, right: 30),
-                          decoration: BoxDecoration(
-                              color: Color(0xFFF0F0F0),
-                              borderRadius: BorderRadius.circular(10)),
-                          child: Column(
-                            children: [
-                              Text('Prot',
-                                  style: TextStyle(
-                                      fontSize: 17, fontFamily: 'Quicksand')),
-                              Text('210', style: TextStyle(fontSize: 20)),
-                            ],
-                          ),
-                        ),
-                        Container(
-                          padding: EdgeInsets.only(
-                              top: 20, left: 30, bottom: 20, right: 30),
-                          decoration: BoxDecoration(
-                              color: Color(0xFFF0F0F0),
-                              borderRadius: BorderRadius.circular(10)),
-                          child: Column(
-                            children: [
-                              Text('Glu',
-                                  style: TextStyle(
-                                      fontSize: 17, fontFamily: 'Quicksand')),
-                              Text('210', style: TextStyle(fontSize: 20)),
-                            ],
-                          ),
-                        ),
+                        NutritionalInfoCard(title: 'Cal', value: dish.calories),
+                        NutritionalInfoCard(title: 'Prot', value: dish.protein),
+                        NutritionalInfoCard(title: 'Glu', value: dish.carbs),
                       ],
-                    )
+                    ),
                   ],
                 ),
-                SizedBox(
-                  height: 30,
-                ),
+                SizedBox(height: 30),
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      'Ingrédients',
-                      style: TextStyle(fontSize: 17, fontFamily: 'Quicksand'),
+                      'Ingredients',
+                      style:
+                          TextStyle(fontSize: 17, fontFamily: 'Quicksand-bold'),
                     ),
-                    SizedBox(
-                      height: 10,
+                    SizedBox(height: 10),
+                    // ListView pour le scroll horizontal
+                    Container(
+                      height: 50, // Hauteur de la vue pour les ingrédients
+                      child: ListView.builder(
+                        scrollDirection: Axis.horizontal,
+                        itemCount: dish.ingredients.length,
+                        itemBuilder: (context, index) {
+                          return IngredientCard(
+                              ingredient: dish.ingredients[index]);
+                        },
+                      ),
                     ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Container(
-                          padding: EdgeInsets.only(
-                              top: 20, left: 30, bottom: 20, right: 30),
-                          decoration: BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: BorderRadius.circular(10),
-                            boxShadow: [
-                              BoxShadow(
-                                color: Colors.grey,
-                                spreadRadius: 3,
-                                blurRadius: 5,
-                                offset: Offset(0, 2),
-                              ),
-                            ],
-                          ),
-                          child: Column(
-                            children: [
-                              Text('Tomate',
-                                  style: TextStyle(
-                                      fontSize: 17, fontFamily: 'Quicksand')),
-                            ],
-                          ),
-                        ),
-                        Container(
-                          padding: EdgeInsets.only(
-                              top: 20, left: 30, bottom: 20, right: 30),
-                          decoration: BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: BorderRadius.circular(10),
-                            boxShadow: [
-                              BoxShadow(
-                                color: Colors.grey,
-                                spreadRadius: 3,
-                                blurRadius: 5,
-                                offset: Offset(0, 2),
-                              ),
-                            ],
-                          ),
-                          child: Column(
-                            children: [
-                              Text('Tomate',
-                                  style: TextStyle(
-                                      fontSize: 17, fontFamily: 'Quicksand')),
-                            ],
-                          ),
-                        ),
-                        Container(
-                          padding: EdgeInsets.only(
-                              top: 20, left: 30, bottom: 20, right: 30),
-                          decoration: BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: BorderRadius.circular(10),
-                            boxShadow: [
-                              BoxShadow(
-                                color: Colors.grey,
-                                spreadRadius: 3,
-                                blurRadius: 5,
-                                offset: Offset(0, 2),
-                              ),
-                            ],
-                          ),
-                          child: Column(
-                            children: [
-                              Text('Tomate',
-                                  style: TextStyle(
-                                      fontSize: 17, fontFamily: 'Quicksand')),
-                            ],
-                          ),
-                        ),
-                      ],
-                    )
                   ],
                 ),
-                SizedBox(
-                  height: 30,
-                ),
+                SizedBox(height: 30),
                 Wrap(
                   children: [
-                    Text('Temps de préparation : ',
-                        style:
-                            TextStyle(fontSize: 17, fontFamily: 'Quicksand')),
-                    Text('15 min',
-                        style: TextStyle(fontSize: 17, fontFamily: 'Quicksand'))
+                    Text(
+                      'Temps de préparation: ',
+                      style:
+                          TextStyle(fontSize: 17, fontFamily: 'Quicksand-bold'),
+                    ),
+                    Text(
+                      '${dish.preparationTime} min',
+                      style: TextStyle(fontSize: 17, fontFamily: 'Quicksand'),
+                    ),
                   ],
                 ),
-                SizedBox(
-                  height: 90,
-                ),
+                SizedBox(height: 90),
               ],
             ),
           ),
         ),
-
-        // Bouton fixe en bas de l'écran
-
+        // Fixed button at the bottom
         Positioned(
           bottom: 0,
           left: 0,
@@ -290,11 +186,9 @@ class DishInfoState extends State<DishInfo> {
               ),
               width: double.infinity,
               padding: EdgeInsets.symmetric(vertical: 10),
-              // color: Colors.orange,
               child: ElevatedButton(
                 onPressed: () {
-                  // Action à effectuer quand le bouton est pressé
-                  print("Ajouté au panier");
+                  print("Added to cart");
                 },
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Color(0xFFFF7F00),
@@ -303,15 +197,79 @@ class DishInfoState extends State<DishInfo> {
                   ),
                   padding: EdgeInsets.symmetric(vertical: 16),
                 ),
-                child: Text(
-                  'Ajouter au panier',
-                  style: TextStyle(fontSize: 18, color: Colors.white),
+                child: Wrap(
+                  children: [
+                    Text(
+                      "\$ ${totalPrice.toStringAsFixed(2)} - ",
+                      style: TextStyle(fontSize: 18, color: Colors.white),
+                    ),
+                    Text(
+                      'Add to cart',
+                      style: TextStyle(fontSize: 18, color: Colors.white),
+                    ),
+                  ],
                 ),
               ),
             ),
           ),
         ),
       ],
+    );
+  }
+}
+
+class NutritionalInfoCard extends StatelessWidget {
+  final String title;
+  final double value;
+
+  const NutritionalInfoCard(
+      {Key? key, required this.title, required this.value})
+      : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: EdgeInsets.symmetric(vertical: 20, horizontal: 30),
+      decoration: BoxDecoration(
+        color: Color(0xFFF0F0F0),
+        borderRadius: BorderRadius.circular(10),
+      ),
+      child: Column(
+        children: [
+          Text(title, style: TextStyle(fontSize: 17, fontFamily: 'Quicksand')),
+          Text('${value.toStringAsFixed(0)}', style: TextStyle(fontSize: 20)),
+        ],
+      ),
+    );
+  }
+}
+
+class IngredientCard extends StatelessWidget {
+  final String ingredient;
+
+  const IngredientCard({Key? key, required this.ingredient}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
+      margin: EdgeInsets.only(right: 10),
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(10),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.grey,
+            spreadRadius: 3,
+            blurRadius: 5,
+            offset: Offset(0, 2),
+          ),
+        ],
+      ),
+      child: Text(
+        ingredient,
+        style: TextStyle(fontSize: 17, fontFamily: 'Quicksand'),
+      ),
     );
   }
 }

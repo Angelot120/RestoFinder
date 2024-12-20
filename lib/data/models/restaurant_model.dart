@@ -1,5 +1,7 @@
+import 'package:floor/floor.dart';
 import 'package:restofinder/domain/entities/Restaurant.dart';
 
+@Entity(tableName: 'restaurant', primaryKeys: [''])
 class RestaurantModel extends Restaurant {
   RestaurantModel({
     required super.id,
@@ -68,7 +70,7 @@ class MenuCategoryModel extends MenuCategory {
     return MenuCategoryModel(
       category: json['category'] ?? '',
       items: (json['items'] as List)
-          .map((itemJson) => MenuItem.fromJson(itemJson))
+          .map((itemJson) => Dish.fromJson(itemJson))
           .toList(),
     );
   }

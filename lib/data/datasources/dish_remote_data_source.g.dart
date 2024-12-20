@@ -13,7 +13,9 @@ class _DishRemoteDataSource implements DishRemoteDataSource {
     this._dio, {
     this.baseUrl,
     this.errorLogger,
-  });
+  }) {
+    baseUrl ??= 'https://maps.googleapis.com/maps/api/place/nearbysearch/json';
+  }
 
   final Dio _dio;
 

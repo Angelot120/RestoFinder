@@ -4,8 +4,10 @@ import 'package:restofinder/data/models/dish_model.dart';
 import 'package:restofinder/data/models/restaurant_model.dart';
 import 'package:restofinder/domain/entities/Dish.dart';
 import 'package:restofinder/domain/entities/Restaurant.dart';
-import 'package:restofinder/presentation/screens/dish_details_screen.dart';
-import 'package:restofinder/presentation/screens/loading_screen.dart';
+// import 'package:restofinder/presentation/screens/card_screen.dart';
+// import 'package:restofinder/presentation/screens/dish_details_screen.dart';
+// import 'package:restofinder/presentation/screens/loading_screen.dart';
+import 'package:restofinder/presentation/screens/welcome_screen.dart';
 // import 'package:restofinder/presentation/screens/home_screen.dart';
 // import 'package:restofinder/presentation/screens/restaurant_details_screen.dart';
 // import 'package:restofinder/presentation/screens/loading_screen.dart';
@@ -103,45 +105,48 @@ class MyApp extends StatelessWidget {
   }
 
   // Désérialisation du JSON en un objet Plat
-  Future<Dish> loadDishData() async {
-    await Future.delayed(Duration(seconds: 0)); // Simule un délai de chargement
-    print("Chargement des données...");
-    return DishModel.fromJson(DishjsonData); // Retourne le plat désérialisé
-  }
+  // Future<Dish> loadDishData() async {
+  //   await Future.delayed(Duration(seconds: 0)); // Simule un délai de chargement
+  //   print("Chargement des données...");
+  //   return DishModel.fromJson(DishjsonData); // Retourne le plat désérialisé
+  // }
 
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'RestoFinder',
-      theme: theme(),
-      debugShowCheckedModeBanner: false,
-      home: FutureBuilder<Dish>(
-          future: loadDishData(), // Charge les données
-          builder: (context, snapshot) {
-            if (snapshot.connectionState == ConnectionState.waiting) {
-              return Scaffold(body: LoadingScreen()
-                  // Center(child: CircularProgressIndicator()),
-                  );
-            } else if (snapshot.hasError) {
-              return Scaffold(
-                body: Stack(
-                  children: [
-                    LoadingScreen(),
-                    Center(child: Text('Erreur de chargement des données...'))
-                  ],
-                ),
-              );
-            } else if (snapshot.hasData) {
-              return DishDetailsScreen(
-                dish: snapshot.data!,
-              );
-            } else {
-              return Scaffold(
-                body: Center(child: Text('Aucune donnée disponible')),
-              );
-            }
-          }),
-    );
+        title: 'RestoFinder',
+        theme: theme(),
+        debugShowCheckedModeBanner: false,
+        home: WelcomeScreen()
+
+
+        // FutureBuilder<Dish>(
+        //     future: loadDishData(), // Charge les données
+        //     builder: (context, snapshot) {
+        //       if (snapshot.connectionState == ConnectionState.waiting) {
+        //         return Scaffold(body: LoadingScreen()
+        //             // Center(child: CircularProgressIndicator()),
+        //             );
+        //       } else if (snapshot.hasError) {
+        //         return Scaffold(
+        //           body: Stack(
+        //             children: [
+        //               LoadingScreen(),
+        //               Center(child: Text('Erreur de chargement des données...'))
+        //             ],
+        //           ),
+        //         );
+        //       } else if (snapshot.hasData) {
+        //         return DishDetailsScreen(
+        //           dish: snapshot.data!,
+        //         );
+        //       } else {
+        //         return Scaffold(
+        //           body: Center(child: Text('Aucune donnée disponible')),
+        //         );
+        //       }
+        //     }),
+        );
   }
 }

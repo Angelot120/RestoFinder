@@ -1,4 +1,5 @@
 import 'package:equatable/equatable.dart';
+// import 'package:restofinder/domain/entities/Dish.dart';
 
 // New extends added
 class Restaurant extends Equatable {
@@ -86,7 +87,7 @@ class Location {
 
 class MenuCategory {
   final String category;
-  final List<MenuItem> items;
+  final List<Dish> items;
 
   MenuCategory({
     required this.category,
@@ -104,32 +105,68 @@ class MenuCategory {
     return MenuCategory(
       category: json['category'],
       items: (json['items'] as List)
-          .map((itemJson) => MenuItem.fromJson(itemJson))
+          .map((itemJson) => Dish.fromJson(itemJson))
           .toList(),
     );
   }
 }
 
-class MenuItem {
+class Dish {
+  final int id;
   final String name;
+  final String description;
   final double price;
+  final List<String> ingredients;
+  final double calories;
+  final double carbs;
+  final double protein;
+  final int preparationTime;
+  final String cuisineType;
+  final List<String> photos;
 
-  MenuItem({
+  Dish({
+    required this.id,
     required this.name,
+    required this.description,
     required this.price,
+    required this.ingredients,
+    required this.calories,
+    required this.carbs,
+    required this.protein,
+    required this.preparationTime,
+    required this.cuisineType,
+    required this.photos,
   });
 
   Map<String, dynamic> toJson() {
     return {
+      'id': id,
       'name': name,
+      'description': description,
       'price': price,
+      'ingredients': ingredients,
+      'calories': calories,
+      'carbs': carbs,
+      'protein': protein,
+      'preparationTime': preparationTime,
+      'cuisineType': cuisineType,
+      'photos': photos,
     };
   }
 
-  factory MenuItem.fromJson(Map<String, dynamic> json) {
-    return MenuItem(
+  factory Dish.fromJson(Map<String, dynamic> json) {
+    return Dish(
+      id: json['id'],
       name: json['name'],
-      price: json['price'],
+      description: json['description'],
+      price: json['price']?.toDouble(),
+      ingredients: List<String>.from(json['ingredients'] ?? []),
+      calories: json['calories'],
+      carbs: json['carbs']?.toDouble(),
+      protein: json['protein']?.toDouble(),
+      preparationTime: json['preparationTime'],
+      cuisineType: json['cuisineType'],
+      photos: List<String>.from(json['photos'] ?? []),
     );
   }
 }

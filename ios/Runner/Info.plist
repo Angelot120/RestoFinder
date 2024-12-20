@@ -63,6 +63,9 @@
 	<key>io.flutter.embedded_views_preview</key>
 	<true/>
 
+	<key>IOGoogleMapsAPIKey</key>
+	<string>AIzaSyDHwNgPt_IqZzbLiyHh7UCSorqI5IY2acg</string>
+
 
 </dict>
 </plist>

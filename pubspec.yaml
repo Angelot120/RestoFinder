@@ -81,6 +81,12 @@ dev_dependencies:
   floor_generator: ^1.5.0
   build_runner: ^2.4.14
   json_serializable: ^6.9.0
+  flutter_launcher_icons: ^0.14.2
+  
+flutter_icons:
+  android: true
+  ios: true
+  image_path: "assets/images/RestoFinder.png"
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
@@ -118,6 +124,9 @@ flutter:
     - family: Quicksand
       fonts:
         - asset: assets/fonts/Quicksand-Regular.ttf
+          weight: 700
+    - family: Quicksand-bold
+      fonts:
         - asset: assets/fonts/Quicksand-Bold.ttf
           weight: 700
   #

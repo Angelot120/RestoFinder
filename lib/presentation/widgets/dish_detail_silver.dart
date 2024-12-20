@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:restofinder/domain/entities/Dish.dart';
+
+import '../../domain/entities/Restaurant.dart';
+// import 'package:restofinder/domain/entities/Dish.dart';
 
 class DishDetailSilver extends SliverPersistentHeaderDelegate {
   final Dish dish;
