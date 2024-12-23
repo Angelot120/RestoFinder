@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:restofinder/domain/entities/Restaurant.dart';
 import 'package:restofinder/presentation/screens/dish_details_screen.dart';
+// import 'package:restofinder/presentation/widgets/location_map.dart';
 
 class RestaurantInfo extends StatelessWidget {
   final Restaurant restaurant;
@@ -65,7 +66,7 @@ class RestaurantInfo extends StatelessWidget {
                       Padding(
                         padding: const EdgeInsets.symmetric(vertical: 8.0),
                         child: Text(
-                          category.category ?? 'Catégorie non disponible',
+                          category.category,
                           style: TextStyle(
                             fontWeight: FontWeight.bold,
                             fontSize: 16,
@@ -81,7 +82,7 @@ class RestaurantInfo extends StatelessWidget {
                           final dish = category.items[itemIndex];
                           return ListTile(
                             title: Text(
-                              dish.name ?? 'Nom non disponible',
+                              dish.name,
                               // style: TextStyle(color: Colors.white),
                             ),
                             subtitle: Text(
@@ -176,6 +177,18 @@ class RestaurantInfo extends StatelessWidget {
               ),
             ],
           ),
+
+          SizedBox(
+            height: 30,
+          ),
+
+          // Container(
+          //   height: 400,
+          //   decoration: BoxDecoration(
+          //       color: Color(0xFFF0F0F0),
+          //       borderRadius: BorderRadius.circular(30)),
+          //   child: LocationMap(),
+          // )
         ],
       ),
     );

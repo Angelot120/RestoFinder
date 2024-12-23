@@ -6,7 +6,10 @@ class CardItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-        decoration: BoxDecoration(color: Color(0xFFF0F0F0)),
+        decoration: BoxDecoration(
+          color: Color(0xFFF0F0F0),
+          borderRadius: BorderRadius.circular(10),
+        ),
         child: Row(
           children: [
             Container(
@@ -24,9 +27,9 @@ class CardItem extends StatelessWidget {
                 ],
                 borderRadius: BorderRadius.circular(10),
               ),
-              padding: EdgeInsets.all(0),
+              padding: EdgeInsets.all(5),
               child: Image.asset(
-                'assets/images/shopping_cart.png',
+                'assets/images/one.jpg',
                 fit: BoxFit.cover,
               ),
             ),

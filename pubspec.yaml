@@ -81,12 +81,12 @@ dev_dependencies:
   floor_generator: ^1.5.0
   build_runner: ^2.4.14
   json_serializable: ^6.9.0
-  flutter_launcher_icons: ^0.14.2
+  # flutter_launcher_icons: ^0.14.2
   
-flutter_icons:
-  android: true
-  ios: true
-  image_path: "assets/images/RestoFinder.png"
+# flutter_icons:
+#  android: true
+#  ios: true
+#  image_path: "assets/images/RestoFinder.png"
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
@@ -115,20 +115,21 @@ flutter:
   # "family" key with the font family name, and a "fonts" key with a
   # list giving the asset and other descriptors for the font. For
   # example:
+
   fonts:
     - family: Baloo
       fonts:
         - asset: assets/fonts/baloo.thambi-regular.ttf
-        # - asset: fonts/Schyler-Italic.ttf
-          # style: italic
     - family: Quicksand
       fonts:
         - asset: assets/fonts/Quicksand-Regular.ttf
-          weight: 700
+          weight: 400
     - family: Quicksand-bold
       fonts:
         - asset: assets/fonts/Quicksand-Bold.ttf
           weight: 700
+
+
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/to/font-from-package

@@ -72,7 +72,7 @@ class RestaurantRemoteDataSource {
                 protein: 2.0,
                 preparationTime: 10,
                 cuisineType: "Provençale",
-                photos: ["assets/images/tapenade.jpg"]),
+                photos: ["assets/images/one.jpg"]),
             Dish(
                 id: 2,
                 name: "Salade Niçoise",
@@ -84,7 +84,7 @@ class RestaurantRemoteDataSource {
                 protein: 12.0,
                 preparationTime: 15,
                 cuisineType: "Provençale",
-                photos: ["assets/images/salade_nicoise.jpg"]),
+                photos: ["assets/images/twoo.jpg"]),
           ]),
           MenuCategory(category: "Plats Principaux", items: [
             Dish(
@@ -98,7 +98,7 @@ class RestaurantRemoteDataSource {
                 protein: 25.0,
                 preparationTime: 60,
                 cuisineType: "Méditerranéenne",
-                photos: ["assets/images/bouillabaisse.jpg"]),
+                photos: ["assets/images/three.jpg"]),
             Dish(
                 id: 4,
                 name: "Ratatouille",
@@ -110,7 +110,7 @@ class RestaurantRemoteDataSource {
                 protein: 3.0,
                 preparationTime: 45,
                 cuisineType: "Française",
-                photos: ["assets/images/ratatouille.jpg"]),
+                photos: ["assets/images/foor.jpg"]),
           ]),
           MenuCategory(category: "Desserts", items: [
             Dish(
@@ -124,13 +124,10 @@ class RestaurantRemoteDataSource {
                 protein: 5.0,
                 preparationTime: 40,
                 cuisineType: "Française",
-                photos: ["assets/images/clafoutis.jpg"]),
+                photos: ["assets/images/one.jpg"]),
           ])
         ],
-        photos: [
-          "https://example.com/provence1.jpg",
-          "https://example.com/provence2.jpg"
-        ],
+        photos: ["assets/images/twoo.jpg", "assets/images/three.jpg"],
         rating: Rating(
           average: 4.8,
           reviewsCount: 150,
@@ -165,7 +162,7 @@ class RestaurantRemoteDataSource {
                 protein: 5.0,
                 preparationTime: 10,
                 cuisineType: "Méditerranéenne",
-                photos: ["assets/images/houmous.jpg"]),
+                photos: ["assets/images/foor.jpg"]),
             Dish(
                 id: 12,
                 name: "Taboulé",
@@ -177,7 +174,7 @@ class RestaurantRemoteDataSource {
                 protein: 3.0,
                 preparationTime: 10,
                 cuisineType: "Méditerranéenne",
-                photos: ["assets/images/taboule.jpg"]),
+                photos: ["assets/images/one.jpg"]),
           ]),
           MenuCategory(category: "Plats Principaux", items: [
             Dish(
@@ -191,7 +188,7 @@ class RestaurantRemoteDataSource {
                 protein: 25.0,
                 preparationTime: 60,
                 cuisineType: "Marocaine",
-                photos: ["assets/images/tajine_poulet.jpg"]),
+                photos: ["assets/images/twoo.jpg"]),
             Dish(
                 id: 14,
                 name: "Moussaka",
@@ -203,7 +200,7 @@ class RestaurantRemoteDataSource {
                 protein: 20.0,
                 preparationTime: 45,
                 cuisineType: "Grecque",
-                photos: ["assets/images/moussaka.jpg"]),
+                photos: ["assets/images/three.jpg"]),
           ]),
           MenuCategory(category: "Desserts", items: [
             Dish(
@@ -217,13 +214,10 @@ class RestaurantRemoteDataSource {
                 protein: 3.0,
                 preparationTime: 20,
                 cuisineType: "Méditerranéenne",
-                photos: ["assets/images/baklava.jpg"]),
+                photos: ["assets/images/foor.jpg"]),
           ])
         ],
-        photos: [
-          "https://example.com/oasis1.jpg",
-          "https://example.com/oasis2.jpg"
-        ],
+        photos: ["assets/images/one.jpg", "assets/images/twoo.jpg"],
         rating: Rating(
           average: 4.6,
           reviewsCount: 120,
@@ -257,7 +251,7 @@ class RestaurantRemoteDataSource {
                 protein: 12.0,
                 preparationTime: 15,
                 cuisineType: "Française",
-                photos: ["assets/images/salade_lyonnaise.jpg"]),
+                photos: ["assets/images/three.jpg"]),
             Dish(
                 id: 17,
                 name: "Quenelle Sauce Nantua",
@@ -270,7 +264,7 @@ class RestaurantRemoteDataSource {
                 protein: 14.0,
                 preparationTime: 20,
                 cuisineType: "Française",
-                photos: ["assets/images/quenelle.jpg"]),
+                photos: ["assets/images/foor.jpg"]),
           ]),
           MenuCategory(category: "Plats Principaux", items: [
             Dish(
@@ -284,7 +278,7 @@ class RestaurantRemoteDataSource {
                 protein: 28.0,
                 preparationTime: 30,
                 cuisineType: "Française",
-                photos: ["assets/images/andouillette.jpg"]),
+                photos: ["assets/images/one.jpg"]),
             Dish(
                 id: 19,
                 name: "Bœuf Bourguignon",
@@ -296,7 +290,7 @@ class RestaurantRemoteDataSource {
                 protein: 35.0,
                 preparationTime: 120,
                 cuisineType: "Française",
-                photos: ["assets/images/boeuf_bourguignon.jpg"]),
+                photos: ["assets/images/twoo.jpg"]),
           ]),
           MenuCategory(category: "Desserts", items: [
             Dish(
@@ -310,13 +304,10 @@ class RestaurantRemoteDataSource {
                 protein: 4.0,
                 preparationTime: 25,
                 cuisineType: "Française",
-                photos: ["assets/images/tarte_tatin.jpg"]),
+                photos: ["assets/images/three.jpg"]),
           ])
         ],
-        photos: [
-          "https://example.com/louis1.jpg",
-          "https://example.com/louis2.jpg"
-        ],
+        photos: ["assets/images/foor.jpg", "assets/images/one.jpg"],
         rating: Rating(
           average: 4.5,
           reviewsCount: 100,
@@ -333,7 +324,7 @@ class RestaurantRemoteDataSource {
         address: "10 Via Roma, 20121 Milan, Italie",
         phone: "+39 02 76 55 88 99",
         email: "contact@bellaitalia.it",
-        website: "https://www.bellaitalia.it",
+        website: "assets/images/twoo.jpg",
         location: Location(
             latitude: 45.464204, longitude: 9.189982, distance: "1.2 km"),
         menu: [
@@ -350,7 +341,7 @@ class RestaurantRemoteDataSource {
                 protein: 3.0,
                 preparationTime: 10,
                 cuisineType: "Italienne",
-                photos: ["assets/images/bruschetta.jpg"]),
+                photos: ["assets/images/three.jpg"]),
             Dish(
                 id: 22,
                 name: "Carpaccio de Bœuf",
@@ -363,7 +354,7 @@ class RestaurantRemoteDataSource {
                 protein: 18.0,
                 preparationTime: 15,
                 cuisineType: "Italienne",
-                photos: ["assets/images/carpaccio.jpg"]),
+                photos: ["assets/images/foor.jpg"]),
           ]),
           MenuCategory(category: "Plats Principaux", items: [
             Dish(
@@ -377,7 +368,7 @@ class RestaurantRemoteDataSource {
                 protein: 8.0,
                 preparationTime: 30,
                 cuisineType: "Italienne",
-                photos: ["assets/images/risotto.jpg"]),
+                photos: ["assets/images/one.jpg"]),
             Dish(
                 id: 24,
                 name: "Pizza Margherita",
@@ -390,7 +381,7 @@ class RestaurantRemoteDataSource {
                 protein: 10.0,
                 preparationTime: 20,
                 cuisineType: "Italienne",
-                photos: ["assets/images/pizza_margherita.jpg"]),
+                photos: ["assets/images/twoo.jpg"]),
           ]),
           MenuCategory(category: "Desserts", items: [
             Dish(
@@ -404,13 +395,10 @@ class RestaurantRemoteDataSource {
                 protein: 6.0,
                 preparationTime: 20,
                 cuisineType: "Italienne",
-                photos: ["assets/images/tiramisu.jpg"]),
+                photos: ["assets/images/three.jpg"]),
           ])
         ],
-        photos: [
-          "https://example.com/italia1.jpg",
-          "https://example.com/italia2.jpg"
-        ],
+        photos: ["assets/images/foor.jpg", "assets/images/one.jpg"],
         rating: Rating(
           average: 4.8,
           reviewsCount: 200,
@@ -428,7 +416,7 @@ class RestaurantRemoteDataSource {
         address: "25 Rue du Taj Mahal, 75010 Paris, France",
         phone: "+33 1 42 78 90 12",
         email: "contact@legourmetindien.fr",
-        website: "https://www.legourmetindien.fr",
+        website: "assets/images/one.jpg",
         location:
             Location(latitude: 48.8675, longitude: 2.3508, distance: "2.0 km"),
         menu: [
@@ -444,7 +432,7 @@ class RestaurantRemoteDataSource {
                 protein: 4.0,
                 preparationTime: 15,
                 cuisineType: "Indienne",
-                photos: ["assets/images/pakoras.jpg"]),
+                photos: ["assets/images/twoo.jpg"]),
             Dish(
                 id: 27,
                 name: "Samosas",
@@ -457,7 +445,7 @@ class RestaurantRemoteDataSource {
                 protein: 5.0,
                 preparationTime: 10,
                 cuisineType: "Indienne",
-                photos: ["assets/images/samosas.jpg"]),
+                photos: ["assets/images/three.jpg"]),
           ]),
           MenuCategory(category: "Plats Principaux", items: [
             Dish(
@@ -472,7 +460,7 @@ class RestaurantRemoteDataSource {
                 protein: 25.0,
                 preparationTime: 25,
                 cuisineType: "Indienne",
-                photos: ["assets/images/tikka_masala.jpg"]),
+                photos: ["assets/images/foor.jpg"]),
             Dish(
                 id: 29,
                 name: "Biryani aux Crevettes",
@@ -484,7 +472,7 @@ class RestaurantRemoteDataSource {
                 protein: 20.0,
                 preparationTime: 30,
                 cuisineType: "Indienne",
-                photos: ["assets/images/biryani.jpg"]),
+                photos: ["assets/images/one.jpg"]),
           ]),
           MenuCategory(category: "Desserts", items: [
             Dish(
@@ -499,7 +487,7 @@ class RestaurantRemoteDataSource {
                 protein: 4.0,
                 preparationTime: 10,
                 cuisineType: "Indienne",
-                photos: ["assets/images/gulab_jamun.jpg"]),
+                photos: ["assets/images/twoo.jpg"]),
             Dish(
                 id: 31,
                 name: "Kheer",
@@ -512,13 +500,10 @@ class RestaurantRemoteDataSource {
                 protein: 6.0,
                 preparationTime: 15,
                 cuisineType: "Indienne",
-                photos: ["assets/images/kheer.jpg"]),
+                photos: ["assets/images/three.jpg"]),
           ]),
         ],
-        photos: [
-          "https://example.com/indien1.jpg",
-          "https://example.com/indien2.jpg"
-        ],
+        photos: ["assets/images/one.jpg", "assets/images/foor.jpg"],
         rating: Rating(
           average: 4.7,
           reviewsCount: 180,

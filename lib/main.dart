@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:restofinder/config/theme/app_themes.dart';
-import 'package:restofinder/data/models/dish_model.dart';
+// import 'package:restofinder/data/models/dish_model.dart';
 import 'package:restofinder/data/models/restaurant_model.dart';
-import 'package:restofinder/domain/entities/Dish.dart';
+// import 'package:restofinder/domain/entities/Dish.dart';
 import 'package:restofinder/domain/entities/Restaurant.dart';
 // import 'package:restofinder/presentation/screens/card_screen.dart';
 // import 'package:restofinder/presentation/screens/dish_details_screen.dart';
@@ -119,7 +119,6 @@ class MyApp extends StatelessWidget {
         theme: theme(),
         debugShowCheckedModeBanner: false,
         home: WelcomeScreen()
-
 
         // FutureBuilder<Dish>(
         //     future: loadDishData(), // Charge les données

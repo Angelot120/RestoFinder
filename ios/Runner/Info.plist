@@ -64,7 +64,10 @@
 	<true/>
 
 	<key>IOGoogleMapsAPIKey</key>
-	<string>AIzaSyDHwNgPt_IqZzbLiyHh7UCSorqI5IY2acg</string>
+	<string>AIzaSyCa3mOusesKhfNijsslDM3ALWwAKOgj2cM</string>
+	<key>GMSApiKey</key>
+	<string>AIzaSyCa3mOusesKhfNijsslDM3ALWwAKOgj2cM</string>
+
 
 
 </dict>

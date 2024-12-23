@@ -47,6 +47,7 @@ class DishInfoState extends State<DishInfo> {
         Padding(
           padding: const EdgeInsets.all(8.0),
           child: Container(
+            padding: EdgeInsets.only(left: 15, right: 15),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -55,13 +56,14 @@ class DishInfoState extends State<DishInfo> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
-                    Expanded(
+                    Container(
                       child: Text(
                         dish.name,
                         style: TextStyle(fontSize: 30),
                         overflow: TextOverflow.ellipsis,
                       ),
                     ),
+                    Spacer(),
                     Row(
                       children: [
                         Material(
@@ -107,7 +109,7 @@ class DishInfoState extends State<DishInfo> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      'Nutritional Info',
+                      'Nutrition',
                       style:
                           TextStyle(fontSize: 17, fontFamily: 'Quicksand-bold'),
                     ),
@@ -204,7 +206,7 @@ class DishInfoState extends State<DishInfo> {
                       style: TextStyle(fontSize: 18, color: Colors.white),
                     ),
                     Text(
-                      'Add to cart',
+                      'Ajouter au panier',
                       style: TextStyle(fontSize: 18, color: Colors.white),
                     ),
                   ],
